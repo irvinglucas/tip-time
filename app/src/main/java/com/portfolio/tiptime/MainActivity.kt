@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
                 val text = getString(R.string.empty_input_text_warning)
                 Toast.makeText(this, text, Toast.LENGTH_SHORT)
                     .show()
+                binding.tipValueTextview.text = ""
+                binding.totalCostWithTipTextview.text = ""
             } else {
                 calculateTip()
             }
@@ -48,11 +50,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         // calculating the percentage
-        val tip = cost * tipPercentage
+        var tip = cost * tipPercentage
 
         // calculating the total cost of the service. Bill  + tip on the bill
-        var finalCostWithTip = when (binding.roundTipSwitch.isChecked) {
+        val finalCostWithTip = when (binding.roundTipSwitch.isChecked) {
             true -> {
+                tip = ceil(tip)
                 cost + ceil(tip)
             }
             else -> {
@@ -63,7 +66,10 @@ class MainActivity : AppCompatActivity() {
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
         val formattedTotalCost = NumberFormat.getCurrencyInstance().format(finalCostWithTip)
 
-        binding.tipResult.text = getString(R.string.formatted_tip ,formattedTip)
-        binding.totalCostWithTip.text = getString(R.string.formatted_total_cost ,formattedTotalCost)
+//      binding.tipValueTextview.text = getString(R.string.formatted_tip ,formattedTip)
+//      binding.totalCostWithTipTextview.text = getString(R.string.formatted_total_cost ,formattedTotalCost)
+
+     binding.tipValueTextview.text = formattedTip
+     binding.totalCostWithTipTextview.text = formattedTotalCost
     }
 }

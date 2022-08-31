@@ -8,8 +8,9 @@
     <string name="no_tip">Bad (no tip)</string>
     <string name="switch_text">Round up tip?</string>
     <string name="button_text">calculate</string>
-    <string name="tip_amount_text">TIP AMOUNT</string>
+    <string name="tip_amount_text">Tip amount:</string>
     <string name="empty_input_text_warning">Please, input the cost of service!</string>
     <string name="formatted_tip">Tip amount: %s</string>
     <string name="formatted_total_cost">Total cost(+tip): %s</string>
+    <string name="total_cost_text">Total cost(+tip):</string>
 </resources>

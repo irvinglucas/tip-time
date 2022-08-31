@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-
     tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/cost_of_service_field"
-        android:layout_width="180dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:autofillHints=""
         android:hint="@string/cost_of_service_text_hint"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         android:textColorHint="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +25,9 @@
         android:id="@+id/question_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/question_one_text"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cost_of_service_field" />
 
@@ -65,7 +68,7 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/round_tip_switch"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:text="@string/switch_text"
@@ -81,31 +84,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/round_tip_switch" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayoutCompat"
+
+    <TextView
+        android:id="@+id/tip_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="17dp"
+        android:text="@string/tip_amount_text"
+        android:textAlignment="textStart"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/total_cost_with_tip"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calculate_button"
-        app:layout_constraintVertical_bias="0.177">
+        tools:text="@string/tip_amount_text" />
 
-        <TextView
-            android:id="@+id/tip_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="@string/tip_amount_text" />
+    <TextView
+        android:id="@+id/total_cost_with_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="17dp"
+        android:text="@string/total_cost_text"
+        android:textAlignment="textStart"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tip_result"
+        tools:text="@string/total_cost_text" />
 
-        <TextView
-            android:id="@+id/total_cost_with_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/tip_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="60dp"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tip_result"
+        app:layout_constraintTop_toBottomOf="@+id/calculate_button"
+        tools:text="0.00" />
 
-            tools:text="TOTAL COST (+TIP)" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
+    <TextView
+        android:id="@+id/total_cost_with_tip_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="17dp"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/total_cost_with_tip"
+        app:layout_constraintTop_toBottomOf="@+id/tip_value_textview"
+        tools:text="0.00" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
