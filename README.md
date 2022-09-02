@@ -15,6 +15,7 @@ This codelab introduces you to a lot of concepts about the recommended programmi
 
 
 ## Preview of the App
+(soon)
 
 ## Technologies used
 
@@ -25,7 +26,10 @@ Since this app is a part of my study plan to become an native Android Developer,
 
 
 
-## Further improvements
+## Further implementations/improvements
 
 - [ ] Share a cool text report with your friends
 - [ ] Improvement of the UI based on Material Design 3
+- [ ] Implement Adaptive Icon
+- [ ] Implement of Dynamic colors
+- [x] Add cool icons to the app
