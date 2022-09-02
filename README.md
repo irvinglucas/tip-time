@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/irvinglucas/tip-time/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" width="400" alt="Tip Time App">
+  <img src="https://github.com/irvinglucas/tip-time/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" width="192" alt="Tip Time App">
 </p>
 
 <h1 align=center>Tip Time app</h1>
