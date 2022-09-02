@@ -1,4 +1,8 @@
-# Tip Time App
+<p align="center">
+  <img src="https://github.com/irvinglucas/tip-time/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" width="400" alt="Tip Time App">
+</p>
+
+<h1 align=center>Tip Time app</h1>
 
 This app is a great tool capable of calculating the tip on a bill according to the satisfaction 
 of the customers. This is an app made with the Google Codelab called ["Getting user input data"](https://developer.android.com/courses/pathways/android-basics-kotlin-unit-2-pathway-1?hl=pt-br), which contains 3 pathways driving you to knowledgement.
