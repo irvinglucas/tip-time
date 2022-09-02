@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.calculateButton.setOnClickListener {
             if (binding.costOfServiceField.text.isEmpty()) {
-                val text = getString(R.string.empty_input_text_warning)
+                val text = getString(R.string.empty_input_text_warning) // here I get the string from string.xml resource file
                 Toast.makeText(this, text, Toast.LENGTH_SHORT)
                     .show()
                 binding.tipValueTextview.text = ""
@@ -63,13 +63,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Updates formatted values 'Tip' and 'Total cost' to the views
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
         val formattedTotalCost = NumberFormat.getCurrencyInstance().format(finalCostWithTip)
 
-//      binding.tipValueTextview.text = getString(R.string.formatted_tip ,formattedTip)
-//      binding.totalCostWithTipTextview.text = getString(R.string.formatted_total_cost ,formattedTotalCost)
-
-     binding.tipValueTextview.text = formattedTip
-     binding.totalCostWithTipTextview.text = formattedTotalCost
+        binding.tipValueTextview.text = formattedTip
+        binding.totalCostWithTipTextview.text = formattedTotalCost
     }
 }
