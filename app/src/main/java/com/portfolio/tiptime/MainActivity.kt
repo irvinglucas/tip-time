@@ -1,6 +1,7 @@
 package com.portfolio.tiptime
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.portfolio.tiptime.databinding.ActivityMainBinding
@@ -18,12 +19,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.calculateButton.setOnClickListener {
-            if (binding.costOfServiceField.text.isEmpty()) {
-                val text = getString(R.string.empty_input_text_warning) // here I get the string from string.xml resource file
+            if (binding.costOfServiceField.text.isNullOrEmpty()) {
+
+                Log.i(
+                    "Calculate button onClickListener",
+                    "THE RESULT IS: ${binding.costOfServiceField.text.isNullOrEmpty()}"
+                )
+
+                val text =
+                    getString(R.string.empty_input_text_warning) // here I get the string from string.xml resource file
                 Toast.makeText(this, text, Toast.LENGTH_SHORT)
                     .show()
                 binding.tipValueTextview.text = ""
                 binding.totalCostWithTipTextview.text = ""
+            } else if (binding.costOfServiceField.text.toString() == "0") {
+                val text = getString(R.string.equal_to_zero_text_warning)
+                Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
             } else {
                 calculateTip()
             }
