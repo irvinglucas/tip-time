@@ -21,18 +21,35 @@
             android:id="@+id/cost_of_service_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:textColorHint="#616161" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ImageView
+        android:contentDescription="@string/app_name"
+        android:id="@+id/service_bell_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_baseline_room_service_24"
+        app:layout_constraintEnd_toStartOf="@+id/question_one"
+        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_layout"
+        app:tint="?attr/colorPrimary">
+
+    </ImageView>
 
     <TextView
         android:id="@+id/question_one"
+        style="@style/Widget.TipTime.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
         android:text="@string/question_one_text"
-        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/text_input_layout"
         app:layout_constraintTop_toBottomOf="@+id/text_input_layout" />
 
@@ -42,43 +59,62 @@
         android:layout_height="wrap_content"
         android:checkedButton="@id/tip_option_one"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/question_one"
         app:layout_constraintTop_toBottomOf="@id/question_one">
 
         <RadioButton
             android:id="@+id/tip_option_one"
+            style="@style/Widget.TipTime.CompoundButton.RadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tip_20_percent" />
 
         <RadioButton
             android:id="@+id/tip_option_two"
+            style="@style/Widget.TipTime.CompoundButton.RadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tip_18_percent" />
 
         <RadioButton
             android:id="@+id/tip_option_three"
+            style="@style/Widget.TipTime.CompoundButton.RadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tip_15_percent" />
 
         <RadioButton
             android:id="@+id/tip_option_four"
+            style="@style/Widget.TipTime.CompoundButton.RadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no_tip" />
 
     </RadioGroup>
 
+    <ImageView
+        android:contentDescription="@string/app_name"
+        android:id="@+id/round_up_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_trending_up_24"
+        app:layout_constraintBottom_toTopOf="@+id/calculate_button"
+        app:layout_constraintEnd_toStartOf="@+id/round_tip_switch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="?attr/colorPrimary" />
+
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/round_tip_switch"
-        android:layout_width="match_parent"
+        style="@style/Widget.TipTime.CompoundButton.Switch"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:text="@string/switch_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tips_options_group" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tips_options_group"
+        app:layout_constraintTop_toBottomOf="@+id/tips_options_group" />
 
     <Button
         android:id="@+id/calculate_button"
@@ -86,18 +122,18 @@
         android:layout_height="wrap_content"
         android:text="@string/button_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/round_up_image"
         app:layout_constraintTop_toBottomOf="@id/round_tip_switch" />
 
 
     <TextView
         android:id="@+id/tip_result"
+        style="@style/Widget.TipTime.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/tip_amount_text"
         android:textAlignment="textStart"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/calculate_button"
@@ -106,12 +142,12 @@
 
     <TextView
         android:id="@+id/total_cost_with_tip"
+        style="@style/Widget.TipTime.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/total_cost_text"
         android:textAlignment="textStart"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tip_result"
@@ -130,19 +166,17 @@
 
         <TextView
             android:id="@+id/tip_value_textview"
+            style="@style/Widget.TipTime.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             tools:text="0.00" />
 
         <TextView
             android:id="@+id/total_cost_with_tip_textview"
+            style="@style/Widget.TipTime.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-
-            android:textSize="20sp"
-
             tools:text="0.00" />
     </LinearLayout>
 
