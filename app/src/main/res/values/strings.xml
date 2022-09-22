@@ -14,4 +14,19 @@
     <string name="formatted_tip">Tip amount: %s</string>
     <string name="formatted_total_cost">Total cost(+tip): %s</string>
     <string name="total_cost_text">Total cost(+tip):</string>
+    <string name="share_button_text">SHARE</string>
+
+    <!--    sharing strings-->
+    <string name="share_cost_of_service_text">COST OF SERVICE</string>
+    <string name="share_tip_percentage_text">TIP PERCENTAGE</string>
+    <string name="share_round_tip_text">ROUND TIP</string>
+    <string name="share_tip_value_text">TIP VALUE</string>
+    <string name="share_total_cost_plus_tip_text">TOTAL COST(+TIP)</string>
+    <string name="round_tip_share_true">Yes</string>
+    <string name="round_tip_share_false">No</string>
+
+    <string name="tip_test_case_one">$10.00</string>
+    <string name="tip_test_case_two">$9.00</string>
+    <string name="tip_test_case_three">$7.50</string>
+    <string name="tip_test_case_four">$0.00</string>
 </resources>

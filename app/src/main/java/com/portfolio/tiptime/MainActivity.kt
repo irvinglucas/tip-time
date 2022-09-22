@@ -1,7 +1,9 @@
 package com.portfolio.tiptime
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.portfolio.tiptime.databinding.ActivityMainBinding
@@ -12,12 +14,22 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private var sharedCostOfService = ""
+    private var sharedTipPercentage = ""
+    private var sharedRoundTip = ""
+    private var sharedTipValue = ""
+    private var sharedTotalCostValue = ""
+
+
     // this code is using view binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        /*
+        * here I put a logic to process if the editText is empty, so we say to the user to put some values inside*/
         binding.calculateButton.setOnClickListener {
             if (binding.costOfServiceField.text.isNullOrEmpty()) {
 
@@ -37,6 +49,31 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
             } else {
                 calculateTip()
+                binding.shareButton.visibility = Button.VISIBLE
+            }
+        }
+
+        // create a share button
+        binding.shareButton.setOnClickListener {
+
+            /*this string has a lot of spaces because when sharing, the text is badly formatted, so I put some spaces to prettify the output*/
+            val formattedShareString = """
+                ${getString(R.string.share_cost_of_service_text)}: $sharedCostOfService
+                ${getString(R.string.share_tip_percentage_text)}: $sharedTipPercentage
+                ${getString(R.string.share_round_tip_text)}? $sharedRoundTip
+                ${getString(R.string.share_tip_percentage_text)}: $sharedTipPercentage
+                ${getString(R.string.share_total_cost_plus_tip_text)}: $sharedTotalCostValue
+            """.trimIndent()
+
+            val shareTotalCostIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, formattedShareString)
+                type = "text/plain"
+            }
+
+            // Verify that the intent will resolve to an activity
+            if (shareTotalCostIntent.resolveActivity(packageManager) != null) {
+                startActivity(shareTotalCostIntent)
             }
         }
     }
@@ -80,5 +117,26 @@ class MainActivity : AppCompatActivity() {
 
         binding.tipValueTextview.text = formattedTip
         binding.totalCostWithTipTextview.text = formattedTotalCost
+
+        //saving all information in the outside scope to share when needed
+        sharedCostOfService =
+            NumberFormat.getCurrencyInstance()
+                .format(binding.costOfServiceField.text.toString().toDouble())
+
+        sharedTipPercentage = when(binding.tipsOptionsGroup.checkedRadioButtonId) {
+            R.id.tip_option_one -> "20%"
+            R.id.tip_option_two -> "18%"
+            R.id.tip_option_three -> "15%"
+            else -> "0%"
+        }
+
+        sharedRoundTip = when(binding.roundTipSwitch.isChecked) {
+            true -> getString(R.string.round_tip_share_true)
+            false -> getString(R.string.round_tip_share_false)
+        }
+
+        sharedTipValue = formattedTip
+        sharedTotalCostValue = formattedTotalCost
+
     }
 }
